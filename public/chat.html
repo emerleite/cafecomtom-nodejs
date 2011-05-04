@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/nowjs/now.js" type="text/javascript"></script>  
+    <script type="text/javascript">
+      $(document).ready(function() {
+        now.nome = prompt("Nome:", "");
+
+        $('#enviar').click(function() {
+          now.enviarMensagem($('#mensagem').val());
+          $('#mensagem').val("");
+        });
+        now.receberMensagem = function(hora, nome, mensagem) {
+          $("#mensagens").append("[" + hora + "] -> " + nome + ":" +  mensagem + "<br/>");
+          window.scrollTo(0, document.body.scrollHeight);
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <div id="mensagens"></div>
+    <input type="text" name="mensagem" id="mensagem">
+    <input type="button" name="enviar" id="enviar" value="enviar">
+  </body>
+</html>
